@@ -6,22 +6,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    RadioGroup group;
+    RadioButton radioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.SplashTheme);
         super.onCreate(savedInstanceState);
 
-        //remove this afterwards
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
+
+        //baby setup
+        group = findViewById(R.id.radiogroup);
+
+        Button btnapply = findViewById(R.id.apply);
+        btnapply.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                int radioId = group.getCheckedRadioButtonId();
+
+                radioButton = findViewById(radioId);
+
+                String gender = (String) radioButton.getText();
+            }
+        });
 
         Button button = findViewById(R.id.button);
 
@@ -39,5 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent); // startActivity allow you to move
             }
         });
+    }
+
+    public void checkButton(View v) {
+        int radioId = group.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioId);
     }
 }
