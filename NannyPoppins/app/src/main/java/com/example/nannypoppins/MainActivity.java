@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 radioButton = findViewById(radioId);
 
                 String gender = (String) radioButton.getText();
+                System.out.println(gender);
             }
         });
 
