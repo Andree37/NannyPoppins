@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // geofencing button
         Button button = findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +54,24 @@ public class MainActivity extends AppCompatActivity {
                  * to another.
                  */Intent intent = new Intent(MainActivity.this,
                         Geofencing.class);
+                startActivity(intent); // startActivity allow you to move
+            }
+        });
+
+        // Home button
+        Button home = findViewById(R.id.apply);
+
+        home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                /*
+                 * Intent is just like glue which helps to navigate one activity
+                 * to another.
+                 */
+                Intent intent = new Intent(MainActivity.this, Home.class);
                 startActivity(intent); // startActivity allow you to move
             }
         });
