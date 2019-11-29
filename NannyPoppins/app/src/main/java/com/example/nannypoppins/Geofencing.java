@@ -158,9 +158,6 @@ public class Geofencing extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if(ESTS!=null) {
-            mMap.addMarker(new MarkerOptions().position(ESTS).title("Marker in Current Location"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ESTS, 50));
-        }
+        getLastLocation();
     }
 }
