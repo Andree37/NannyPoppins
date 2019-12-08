@@ -34,7 +34,24 @@ public class Home extends AppCompatActivity {
                 startActivity(intent); // startActivity allow you to move
             }
         });
+        // camera button
+        Button camara = findViewById(R.id.btn_camera);
 
+        camara.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                /*
+                 * Intent is just like glue which helps to navigate one activity
+                 * to another.
+                 */
+                Intent intent = new Intent(Home.this,
+                        Camara.class);
+                startActivity(intent); // startActivity allow you to move
+            }
+        });
         final AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
         builder.setMessage("U sure, man?");
         builder.setCancelable(true);

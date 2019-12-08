@@ -31,7 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class Geofencing extends FragmentActivity implements OnMapReadyCallback {
+public class Geofencing extends FragmentActivity implements OnMapReadyCallback, Runnable{
 
     private static final int PERMISSION_ID = 7 ;
     private LocationRequest mLocationRequest;
@@ -129,6 +129,9 @@ public class Geofencing extends FragmentActivity implements OnMapReadyCallback {
             requestPermissions();
         }
     }
+    public void run(){
+        getLastLocation();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +147,7 @@ public class Geofencing extends FragmentActivity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
-
+        run();
     }
     @Override
     public void onResume(){
@@ -154,7 +157,14 @@ public class Geofencing extends FragmentActivity implements OnMapReadyCallback {
         }
 
     }
+    /*@Override
+    public void onStop(){
 
+    }
+    @Override
+    public void onDestroy(){
+
+    }*/
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

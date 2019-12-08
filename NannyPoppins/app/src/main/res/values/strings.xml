@@ -2,4 +2,8 @@
     <string name="app_name">NannyPoppins</string>
     <string name="title_activity_maps">Map</string>
     <string name="geofence">Geofence</string>
+    <string name="permission_request" />
+    <string name="camera_error" />
+    <string name="stop" />
+    <string name="record" />
 </resources>
