@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/perfil_imagem_bebe" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/babyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,16 +45,16 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/babyAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
         android:ems="10"
-        android:hint="dd/mm/yyyy"
-        android:inputType="date"
+        android:hint="Anos do bebé"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/babyName"
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
@@ -82,7 +82,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/radioButton2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/babyAge"
             tools:ignore="MissingConstraints" />
 
         <RadioButton
@@ -95,7 +95,7 @@
             android:onClick="checkButton"
             android:text="Rapariga"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/babyAge"
             tools:ignore="MissingConstraints" />
 
     </RadioGroup>
@@ -111,4 +111,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.259" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
