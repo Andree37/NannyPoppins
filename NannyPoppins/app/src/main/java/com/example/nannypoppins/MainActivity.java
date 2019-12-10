@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,12 +38,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // loading screen
         setTheme(R.style.SplashTheme);
         super.onCreate(savedInstanceState);
 
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
 
+        //folder set up for first time use
+        File filePhotos = new File(Environment.getExternalStorageDirectory() + "NannyPhotos");
+        File fileVideos = new File(Environment.getExternalStorageDirectory() +"NannyVideos");
+        File fileCreations = new File(Environment.getExternalStorageDirectory() + "NannyCreations");
+
+        //why false reeeeeeee
+        if(!filePhotos.exists()) {
+            System.out.println(filePhotos.mkdirs());
+        }
+        if(!fileVideos.exists()) {
+            fileVideos.mkdirs();
+        }
+        if(!fileCreations.exists()) {
+            fileCreations.mkdirs();
+        }
         //baby setup
         group = findViewById(R.id.radiogroup);
 
@@ -57,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //get birthdate
                 EditText ageTxt = (EditText) findViewById(R.id.babyAge);
-                int age = Integer.parseInt(ageTxt.getText().toString());
+                int age = 0;
+                if (!ageTxt.getText().toString().equals("")) {
+                    age = Integer.parseInt(ageTxt.getText().toString());
+                }
 
                 //get name
                 EditText nameTxt = (EditText) findViewById(R.id.babyName);
