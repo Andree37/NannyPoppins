@@ -9,6 +9,16 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     RadioGroup group;
@@ -21,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
+
+        //get database
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Child");
 
         //baby setup
         group = findViewById(R.id.radiogroup);
@@ -36,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
                 String gender = (String) radioButton.getText();
                 System.out.println(gender);
+
+                Baby baby = new Baby("Daniel", new Timestamp(System.currentTimeMillis()), false);
+                dbRef.push().setValue("test");
+
+                Intent intent = new Intent(MainActivity.this, Home.class);
+                startActivity(intent); // startActivity allow you to move
+
             }
         });
 
@@ -58,23 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Home button
-        Button home = findViewById(R.id.apply);
-
-        home.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                /*
-                 * Intent is just like glue which helps to navigate one activity
-                 * to another.
-                 */
-                Intent intent = new Intent(MainActivity.this, Home.class);
-                startActivity(intent); // startActivity allow you to move
-            }
-        });
     }
 
     public void checkButton(View v) {
