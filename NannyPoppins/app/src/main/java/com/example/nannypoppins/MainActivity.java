@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         File fileVideos = new File(Environment.getExternalStorageDirectory() +"NannyVideos");
         File fileCreations = new File(Environment.getExternalStorageDirectory() + "NannyCreations");
 
-        //why false reeeeeeee
+        // folders need to be fiddled with
         if(!filePhotos.exists()) {
             System.out.println(filePhotos.mkdirs());
         }
@@ -105,26 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-
-        // geofencing button
-        Button button = findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                /*
-                 * Intent is just like glue which helps to navigate one activity
-                 * to another.
-                 */Intent intent = new Intent(MainActivity.this,
-                        Geofencing.class);
-                startActivity(intent); // startActivity allow you to move
-            }
-        });
-
     }
 
     public void checkButton(View v) {
