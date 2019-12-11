@@ -2,6 +2,7 @@ package com.example.nannypoppins;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -110,6 +111,20 @@ public class Camara extends AppCompatActivity {
                 takePicture();
             }
         });
+
+        // home button
+        Button home = findViewById(R.id.btn_home);
+
+        home.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Camara.this,
+                        Home.class);
+                startActivity(intent);
+            }
+        });
         // Listener for Switch cameras button
         switchCameraButton = (Button) findViewById(R.id.btn_flip_camera);
         switchCameraButton.setOnClickListener(new View.OnClickListener() {
@@ -130,9 +145,11 @@ public class Camara extends AppCompatActivity {
             reopenCamera();
         }
     }
-
+    public void closeCamera(){
+        cameraDevice.close();
+    }
     public void reopenCamera() {
-        //closeCamera();
+        closeCamera();
         openCamera();
     }
     private void takePicture() {
@@ -167,7 +184,7 @@ public class Camara extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION,ORIENTATIONS.get(rotation));
 
-            file = new File(Environment.getExternalStorageDirectory()+"/"+ UUID.randomUUID().toString()+".jpg");
+            file = new File(Environment.getExternalStorageDirectory()+"/photos/"+ UUID.randomUUID().toString()+".jpg");
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
                 public void onImageAvailable(ImageReader imageReader) {
@@ -242,7 +259,6 @@ public class Camara extends AppCompatActivity {
     private void createCameraPreview() {
         try{
             SurfaceTexture texture = textureView.getSurfaceTexture();
-            assert  texture != null;
             texture.setDefaultBufferSize(imageDimension.getWidth(),imageDimension.getHeight());
             Surface surface = new Surface(texture);
             captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -281,12 +297,10 @@ public class Camara extends AppCompatActivity {
     private void openCamera() {
         CameraManager manager = (CameraManager)getSystemService(Context.CAMERA_SERVICE);
         try{
-            cameraId = manager.getCameraIdList()[0];
             CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
             StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             assert map != null;
             imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
-            //Check realtime permission if run higher API 23
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             {
                 ActivityCompat.requestPermissions(this,new String[]{
