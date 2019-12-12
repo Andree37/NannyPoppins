@@ -2,10 +2,15 @@ package com.example.nannypoppins;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,20 +50,35 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
 
+        // ask permitions for folder creation
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            },201);
+        }
+
         //folder set up for first time use
-        File filePhotos = new File(Environment.getExternalStorageDirectory() + "NannyPhotos");
-        File fileVideos = new File(Environment.getExternalStorageDirectory() +"NannyVideos");
-        File fileCreations = new File(Environment.getExternalStorageDirectory() + "NannyCreations");
+        File filePhotos = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"/NannyPhotos");
+        File fileVideos = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"/NannyVideos");
+        File fileCreations = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "/NannyCreations");
+
+        System.out.println(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES));
 
         // folders need to be fiddled with
         if(!filePhotos.exists()) {
-            System.out.println(filePhotos.mkdirs());
+            filePhotos.mkdir();
         }
         if(!fileVideos.exists()) {
-            fileVideos.mkdirs();
+            fileVideos.mkdir();
         }
         if(!fileCreations.exists()) {
-            fileCreations.mkdirs();
+            fileCreations.mkdir();
         }
         //baby setup
         group = findViewById(R.id.radiogroup);
