@@ -20,6 +20,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Settings"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
 
         <meta-data
@@ -39,6 +40,7 @@
             android:name=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+
         </activity>
         <activity
             android:name=".MainActivity"
@@ -57,6 +59,17 @@
         <activity
             android:name=".Camara"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".PasswordSetup"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".PasswordOut"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".PasswordDefinitions"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>

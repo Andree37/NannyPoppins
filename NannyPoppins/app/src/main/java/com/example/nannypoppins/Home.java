@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,8 +119,9 @@ public class Home extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                Intent intent = new Intent(Home.this,
+                        PasswordOut.class);
+                startActivity(intent);
             }
         });
 
@@ -130,7 +133,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this,
-                        Settings.class);
+                        PasswordDefinitions.class);
                 startActivity(intent); // startActivity allow you to move
             }
         });
@@ -214,4 +217,5 @@ public class Home extends AppCompatActivity {
             return position;
         }
     }
+    
 }

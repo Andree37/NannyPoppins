@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class PasswordSetup extends AppCompatActivity {
-
+        public static String storedPIN;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
         // loading screen
@@ -35,25 +35,19 @@ public class PasswordSetup extends AppCompatActivity {
                                 //get PIN
                                 EditText pinTxt = (EditText) findViewById(R.id.pin);
                                 String pin = pinTxt.getText().toString();
-                                if (pin.length() < 3 ) {
+
+                                if (pinTxt.getText().toString().length() < 3 ) {
                                         TextView AlertTxt = (TextView) findViewById(R.id.AlertTxt);
                                         AlertTxt.setEnabled(true);
                                         AlertTxt.setTextColor(Color.RED);
                                 }else {
-                                        //get database
-                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                                        DocumentReference pinref = db.collection("PIN").document();
-                                        pinref.set(pin).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()) {
+                                       storedPIN = pin;
                                                                 Intent intent = new Intent(PasswordSetup.this,
                                                                         Home.class);
                                                                 startActivity(intent);
-                                                        }
-                                                }
-                                        });
+
+
+
                                 }
                         }
                 });

@@ -39,5 +39,15 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent); // startActivity allow you to move
             }
         });
+
+        Button exit = findViewById(R.id.btn_exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this,
+                        Home.class);
+                startActivity(intent);
+            }
+        });
     }
 }
