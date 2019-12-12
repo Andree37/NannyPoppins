@@ -6,4 +6,10 @@
     <string name="camera_error" />
     <string name="stop" />
     <string name="record" />
+    <string name="start_now">New</string>
+    <string name="brush">Brush</string>
+    <string name="erase">Erase</string>
+    <string name="save">Save</string>
+    <string name="paint">Paint</string>
+    <string name="appbar_scrolling_view_behavior">What</string>
 </resources>

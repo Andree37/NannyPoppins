@@ -137,6 +137,17 @@ public class Home extends AppCompatActivity {
                 startActivity(intent); // startActivity allow you to move
             }
         });
+        // colorgame button
+        Button colorgame = findViewById(R.id.btn_colors);
+        colorgame.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this,
+                        DrawingGame.class);
+                startActivity(intent); // startActivity allow you to move
+            }
+        });
     }
 
     private void requestPermissions() {
@@ -217,5 +228,5 @@ public class Home extends AppCompatActivity {
             return position;
         }
     }
-    
+
 }
