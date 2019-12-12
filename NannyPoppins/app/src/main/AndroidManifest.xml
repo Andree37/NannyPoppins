@@ -55,7 +55,7 @@
             android:name=".Geofencing"
             android:label="@string/title_activity_maps"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            ></activity>
+            </activity>
         <activity
             android:name=".Camara"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
