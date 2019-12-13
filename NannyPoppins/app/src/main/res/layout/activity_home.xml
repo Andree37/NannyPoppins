@@ -22,24 +22,25 @@
         android:id="@+id/btn_camera"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="60dp"
         android:background="@drawable/menu_app_camara"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092" />
 
     <Button
         android:id="@+id/btn_animals"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="30dp"
         android:background="@drawable/menu_app_animais"
-        app:layout_constraintEnd_toStartOf="@+id/btn_colors"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_camera"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092" />
 
     <Button
         android:id="@+id/btn_colors"
@@ -49,47 +50,58 @@
         android:layout_marginEnd="56dp"
         android:background="@drawable/menu_app_colorir"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_kids"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/menu_app_pastas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_camera" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
 
     <Button
         android:id="@+id/btn_addApps"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/menu_app_add"
-        app:layout_constraintStart_toEndOf="@+id/btn_kids"
-        app:layout_constraintTop_toBottomOf="@+id/btn_animals" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_animals"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
 
     <Button
         android:id="@+id/btn_exit"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="64dp"
         android:background="@drawable/button_out"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
 
     <Button
         android:id="@+id/btn_settings"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="64dp"
         android:background="@drawable/button_def"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
 
     <GridView
         android:id="@+id/displayApps"
@@ -101,10 +113,10 @@
         android:numColumns="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.798">
 
     </GridView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,42 +11,46 @@
         android:id="@+id/btn_videos"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="80dp"
         android:background="@drawable/pastas_videos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
 
     <Button
         android:id="@+id/btn_drawings"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="52dp"
         android:background="@drawable/pastas_desenhos"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
 
     <Button
         android:id="@+id/btn_home"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="84dp"
         android:background="@drawable/button_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913" />
 
     <Button
         android:id="@+id/btn_images"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="32dp"
         android:background="@drawable/pastas_fotos"
-        app:layout_constraintEnd_toStartOf="@+id/btn_drawings"
-        app:layout_constraintStart_toEndOf="@+id/btn_videos"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
 </androidx.constraintlayout.widget.ConstraintLayout>
