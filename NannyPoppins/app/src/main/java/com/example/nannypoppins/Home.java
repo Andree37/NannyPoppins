@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,11 +60,13 @@ public class Home extends AppCompatActivity {
             running_thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    EditText timerView = (EditText) findViewById(R.id.timer);
-                    timerView.setText(""+counter);
+                    ProgressBar timerView = (ProgressBar) findViewById(R.id.timer);
+                    timerView.getProgressDrawable().setColorFilter(
+                            Color.GREEN, android.graphics.PorterDuff.Mode.SRC_IN);
+                    timerView.setProgress(counter);
                     while (counter > 0) {
                         counter--;
-                        timerView.setText(""+counter);
+                        timerView.setProgress(counter);
                         SystemClock.sleep(1000);
                         final int finalCounter = counter;
                     }
@@ -257,9 +260,9 @@ public class Home extends AppCompatActivity {
                 convertView = layoutInflater.inflate(R.layout.linear_layout_apps, null);
             }
             final ImageView imageView = (ImageView) convertView.findViewById(R.id.imageview_app_art);
-            final TextView nameTextView = (TextView) convertView.findViewById(R.id.textview_app_name);
+            //final TextView nameTextView = (TextView) convertView.findViewById(R.id.textview_app_name);
             imageView.setImageDrawable(info.loadIcon(getPackageManager()));
-            nameTextView.setText(info.loadLabel(getPackageManager()));
+            //nameTextView.setText(info.loadLabel(getPackageManager()));
             return convertView;
         }
 

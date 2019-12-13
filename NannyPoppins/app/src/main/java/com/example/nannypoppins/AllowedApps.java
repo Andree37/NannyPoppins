@@ -80,7 +80,7 @@ public class AllowedApps extends ListActivity {
             PackageManager pm = getPackageManager();
             for (ApplicationInfo app : apps) {
                 if(pm.getLaunchIntentForPackage(app.packageName) != null) {
-                    if (!app.packageName.equalsIgnoreCase("com.projeto.kidsecurenest")) {
+                    if (!app.packageName.equalsIgnoreCase("com.example.nannypoppings")) {
                         applist.add(app);
                     }
                 }
