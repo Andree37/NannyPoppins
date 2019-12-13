@@ -42,6 +42,8 @@ public class Home extends AppCompatActivity {
     WindowManager manager;
     WindowManager.LayoutParams localLayoutParams;
     static Thread running_thread;
+    public static int counter = 300;
+    public static boolean restartTimer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +51,15 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //initialize timer if not existent
+        if(restartTimer) {
+            running_thread.interrupt();
+            restartTimer = false;
+        }
         if(running_thread == null || !running_thread.isAlive()) {
             running_thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    int min = 5;
-                    int counter = 5 * 60;
                     EditText timerView = (EditText) findViewById(R.id.timer);
-                    System.out.println(timerView);
                     timerView.setText(""+counter);
                     while (counter > 0) {
                         counter--;
@@ -68,6 +71,11 @@ public class Home extends AppCompatActivity {
                     Intent intent = new Intent(Home.this,
                             PasswordDefinitions.class);
                     startActivity(intent);
+                    try {
+                        running_thread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             running_thread.start();

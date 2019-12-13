@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Settings extends AppCompatActivity {
 
@@ -47,6 +51,24 @@ public class Settings extends AppCompatActivity {
                 Intent intent = new Intent(Settings.this,
                         Home.class);
                 startActivity(intent);
+            }
+        });
+
+        // new timer settings
+        final EditText timerTxt = (EditText) findViewById(R.id.new_timer);
+
+        Button btn_timer = (Button) findViewById(R.id.btn_setTimer);
+        btn_timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int new_timer = 0;
+                if(!timerTxt.getText().toString().equals(""))
+                    new_timer = Integer.parseInt(timerTxt.getText().toString());
+                System.out.println(new_timer);
+                if(new_timer != 0) {
+                    Home.restartTimer = true;
+                    Home.counter = new_timer;
+                }
             }
         });
     }

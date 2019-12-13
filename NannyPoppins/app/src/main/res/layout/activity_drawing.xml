@@ -40,8 +40,8 @@
 
     <com.example.nannypoppins.DrawingView
         android:id="@+id/drawing"
-        android:layout_width="fill_parent"
-        android:layout_height="610dp"
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
         android:layout_weight="1"
         android:foreground="@drawable/turkey_paint" />
     <LinearLayout
