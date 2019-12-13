@@ -44,6 +44,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        // btn exit settings
         Button exit = findViewById(R.id.btn_exit);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,18 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //btn profile
+        Button profile = findViewById(R.id.btn_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this,
+                        Profile.class);
+                startActivity(intent);
+            }
+        });
+
 
         // new timer settings
         final EditText timerTxt = (EditText) findViewById(R.id.new_timer);

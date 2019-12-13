@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 @IgnoreExtraProperties
 public class Baby implements Serializable {
     private String name;
-    private int age;
+    private int age, id;
     private String gender;
 
     public Baby(String name, int age, String gender) {
@@ -19,6 +19,14 @@ public class Baby implements Serializable {
 
     public Baby() {
 
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getName() {

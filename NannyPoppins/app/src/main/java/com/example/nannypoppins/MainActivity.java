@@ -19,12 +19,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.File;
 import java.sql.Timestamp;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     RadioGroup group;
     RadioButton radioButton;
+    public static int baby_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,20 +111,28 @@ public class MainActivity extends AppCompatActivity {
                 //get database
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                DocumentReference childRef = db.collection("Child").document();
+                final DocumentReference childRef = db.collection("Child").document();
 
-                Baby baby = new Baby();
+                final Baby baby = new Baby();
                 baby.setBirthDate(age);
                 baby.setName(name);
                 baby.setGender(gender);
 
-                childRef.set(baby).addOnCompleteListener(new OnCompleteListener<Void>() {
+                db.collection("Child").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this, PasswordSetup.class);
-                            startActivity(intent); // startActivity allow you to move
-                        }
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        baby.setID(queryDocumentSnapshots.getDocuments().size());
+
+                        childRef.set(baby).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()) {
+                                    Intent intent = new Intent(MainActivity.this, PasswordSetup.class);
+                                    startActivity(intent); // startActivity allow you to move
+                                }
+                            }
+                        });
+                        baby_id = baby.getID();
                     }
                 });
             }
