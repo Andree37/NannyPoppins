@@ -184,6 +184,17 @@ public class Home extends AppCompatActivity {
                 startActivity(intent); // startActivity allow you to move
             }
         });
+        // animalgame button
+        Button animalgame = findViewById(R.id.btn_animals);
+        animalgame.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this,
+                        AnimalGame.class);
+                startActivity(intent); // startActivity allow you to move
+            }
+        });
     }
 
     private void requestPermissions() {
