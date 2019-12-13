@@ -14,6 +14,7 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,12 +41,38 @@ public class Home extends AppCompatActivity {
     CustomViewGroup view;
     WindowManager manager;
     WindowManager.LayoutParams localLayoutParams;
-
+    static Thread running_thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //initialize timer if not existent
+        if(running_thread == null || !running_thread.isAlive()) {
+            running_thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    int min = 5;
+                    int counter = 5 * 60;
+                    EditText timerView = (EditText) findViewById(R.id.timer);
+                    System.out.println(timerView);
+                    timerView.setText(""+counter);
+                    while (counter > 0) {
+                        counter--;
+                        timerView.setText(""+counter);
+                        SystemClock.sleep(1000);
+                        final int finalCounter = counter;
+                    }
+
+                    Intent intent = new Intent(Home.this,
+                            PasswordDefinitions.class);
+                    startActivity(intent);
+                }
+            });
+            running_thread.start();
+        }
+
 
         //initial setup
         requestPermissions();

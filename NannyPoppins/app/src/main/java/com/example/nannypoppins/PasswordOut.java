@@ -38,7 +38,8 @@ public class PasswordOut extends AppCompatActivity {
                 EditText pinTxt = (EditText) findViewById(R.id.pin);
                 String pin = pinTxt.getText().toString();
 
-
+                System.out.println(pin);
+                System.out.println(PasswordSetup.storedPIN);
                 if (pinTxt.getText().toString().length() < 3 || !pinTxt.getText().toString().equals(PasswordSetup.storedPIN) ) {
                     TextView AlertTxt = (TextView) findViewById(R.id.AlertTxt);
                     AlertTxt.setEnabled(true);
