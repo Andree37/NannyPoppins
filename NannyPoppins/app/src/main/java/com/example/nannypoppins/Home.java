@@ -3,7 +3,6 @@ package com.example.nannypoppins;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -115,7 +114,7 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this,
                         Folder.class);
-                startActivity(intent); // startActivity allow you to move
+                startActivity(intent);
             }
         });
         // camera button
@@ -125,15 +124,10 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 
-                /*
-                 * Intent is just like glue which helps to navigate one activity
-                 * to another.
-                 */
                 Intent intent = new Intent(Home.this,
                         Camara.class);
-                startActivity(intent); // startActivity allow you to move
+                startActivity(intent);
             }
         });
         final AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
@@ -217,8 +211,9 @@ public class Home extends AppCompatActivity {
         for (ApplicationInfo app : apps) {
             if (pm.getLaunchIntentForPackage(app.packageName) != null) {
                 if (!app.packageName.equalsIgnoreCase("com.example.nannypoppins")) {
-                    if (mApps.size() < 4)
+                    if (mApps.size() < 4) {
                         mApps.add(app);
+                    }
                 }
             }
 

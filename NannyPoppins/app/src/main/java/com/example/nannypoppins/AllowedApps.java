@@ -80,7 +80,7 @@ public class AllowedApps extends ListActivity {
             PackageManager pm = getPackageManager();
             for (ApplicationInfo app : apps) {
                 if(pm.getLaunchIntentForPackage(app.packageName) != null) {
-                    if (!app.packageName.equalsIgnoreCase("com.example.nannypoppings")) {
+                    if (!app.packageName.equalsIgnoreCase("com.example.nannypoppins")) {
                         applist.add(app);
                     }
                 }
@@ -88,7 +88,10 @@ public class AllowedApps extends ListActivity {
             }
             listadaptor = new AdaptadorApps(AllowedApps.this,
                     R.layout.row_apps, applist);
-            Home.mApps = AdaptadorApps.appsLis;
+            System.out.println(Home.mApps.toString());
+            System.out.println(AdaptadorApps.appsLis);
+            Home.mApps.addAll(AdaptadorApps.appsLis);
+            System.out.println(Home.mApps.toString());
 
             return null;
         }
@@ -123,7 +126,7 @@ public class AllowedApps extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Home.mApps = AdaptadorApps.appsLis;
+                Home.mApps.addAll(AdaptadorApps.appsLis);
                 finish();
                 return true;
         }
