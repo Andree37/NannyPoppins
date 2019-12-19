@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.104" />
 
     <Button
         android:id="@+id/btn_animals"
@@ -41,17 +41,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.104" />
 
     <Button
         android:id="@+id/btn_colors"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="56dp"
         android:background="@drawable/menu_app_colorir"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.996"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <Button
         android:id="@+id/btn_exit"
@@ -93,8 +93,8 @@
 
     <GridView
         android:id="@+id/displayApps"
-        android:layout_width="304dp"
-        android:layout_height="352dp"
+        android:layout_width="317dp"
+        android:layout_height="413dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="-3dp"
         android:layout_marginBottom="72dp"

@@ -49,14 +49,23 @@ public class Profile extends AppCompatActivity {
                 List<DocumentSnapshot> doc = queryDocumentSnapshots.getDocuments();
                 DocumentSnapshot doc_found = null;
                 for (DocumentSnapshot d : doc) {
-                    String id = d.getData().get("id").toString();
+                    String id = "0";
+                    if(d != null)
+                        try {
+                            id = d.getData().get("id").toString();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     if (Integer.parseInt(id) == MainActivity.baby_id) {
                         doc_found = d;
                     }
                 }
-
-                String db_name = doc_found.getData().get("name").toString();
-                String db_age = doc_found.getData().get("birthDate").toString();
+                String db_name = "";
+                String db_age = "";
+                if(doc_found != null) {
+                    db_name = doc_found.getData().get("name").toString();
+                    db_age = doc_found.getData().get("birthDate").toString();
+                }
                 name.setText(db_name);
                 age.setText(db_age);
             }
