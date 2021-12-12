@@ -88,54 +88,50 @@ public class MainActivity extends AppCompatActivity {
         group = findViewById(R.id.radiogroup);
 
         Button btnapply = findViewById(R.id.apply);
-        btnapply.setOnClickListener(new View.OnClickListener() {
+        btnapply.setOnClickListener(v -> {
+            //get gender
+            int radioId = group.getCheckedRadioButtonId();
+            radioButton = findViewById(radioId);
+            String gender = (String) radioButton.getText();
 
-            @Override
-            public void onClick(View v) {
-                //get gender
-                int radioId = group.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                String gender = (String) radioButton.getText();
-
-                //get birthdate
-                EditText ageTxt = (EditText) findViewById(R.id.babyAge);
-                int age = 0;
-                if (!ageTxt.getText().toString().equals("")) {
-                    age = Integer.parseInt(ageTxt.getText().toString());
-                }
-
-                //get name
-                EditText nameTxt = (EditText) findViewById(R.id.babyName);
-                String name = nameTxt.getText().toString();
-
-                //get database
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                final DocumentReference childRef = db.collection("Child").document();
-
-                final Baby baby = new Baby();
-                baby.setBirthDate(age);
-                baby.setName(name);
-                baby.setGender(gender);
-
-                db.collection("Child").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        baby.setID(queryDocumentSnapshots.getDocuments().size());
-
-                        childRef.set(baby).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()) {
-                                    Intent intent = new Intent(MainActivity.this, PasswordSetup.class);
-                                    startActivity(intent); // startActivity allow you to move
-                                }
-                            }
-                        });
-                        baby_id = baby.getID();
-                    }
-                });
+            //get birthdate
+            EditText ageTxt = (EditText) findViewById(R.id.babyAge);
+            int age = 0;
+            if (!ageTxt.getText().toString().equals("")) {
+                age = Integer.parseInt(ageTxt.getText().toString());
             }
+
+            //get name
+            EditText nameTxt = (EditText) findViewById(R.id.babyName);
+            String name = nameTxt.getText().toString();
+
+            //get database
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            final DocumentReference childRef = db.collection("Child").document();
+
+            final Baby baby = new Baby();
+            baby.setBirthDate(age);
+            baby.setName(name);
+            baby.setGender(gender);
+
+            db.collection("Child").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    baby.setID(queryDocumentSnapshots.getDocuments().size());
+
+                    childRef.set(baby).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()) {
+                                Intent intent = new Intent(MainActivity.this, PasswordSetup.class);
+                                startActivity(intent); // startActivity allow you to move
+                            }
+                        }
+                    });
+                    baby_id = baby.getID();
+                }
+            });
         });
     }
 
